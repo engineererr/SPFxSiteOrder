@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "site-order-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/siteOrder/SiteOrderWebPart.js",
+          "manifest": "./src/webparts/siteOrder/SiteOrderWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SiteOrderWebPartStrings": "lib/webparts/siteOrder/loc/{locale}.js"
+  }
+}
