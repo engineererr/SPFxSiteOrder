@@ -1,9 +1,5 @@
-export const enum Products {
-  SharePoint,
-  Delve,
-  Exchange
-}
+export type Product = "SharePoint" | "Delve" | "Exchange";
 export interface IOrderBoxProps {
   title: string;
-  products: Array<Products>;
+  products: Array<Product>;
 }

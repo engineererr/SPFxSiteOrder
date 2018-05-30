@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./SiteOrder.module.scss";
-import { IOrderBoxProps, Products } from "./IOrderBoxProps";
+import { IOrderBoxProps, Product } from "./IOrderBoxProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import { PrimaryButton, Icon, Label, } from "office-ui-fabric-react";
 import IconContainer from "./IconContainer";
@@ -9,8 +9,8 @@ import IconContainer from "./IconContainer";
 export default class OrderBox extends React.Component<IOrderBoxProps, {}> {
 
   public render(): React.ReactElement<IOrderBoxProps> {
-    let iconContainers: any = this.props.products.map((product: Products, i: number) => {
-      return <IconContainer key={i} iconName={product.toString() + "Logo"} label={product.toString()} />;
+    let iconContainers: any = this.props.products.map((product: Product, i: number) => {
+      return <IconContainer key={i} iconName={product + "Logo"} label={product} />;
     });
 
     return (

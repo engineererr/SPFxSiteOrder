@@ -6,7 +6,7 @@ import { PrimaryButton, Icon, Label, } from "office-ui-fabric-react";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 
 import OrderBox from "./OrderBox";
-import { Products } from "./IOrderBoxProps";
+import { Product } from "./IOrderBoxProps";
 
 export default class SiteOrder extends React.Component<ISiteOrderProps, {}> {
 
@@ -17,9 +17,9 @@ export default class SiteOrder extends React.Component<ISiteOrderProps, {}> {
     return (
       <div className={styles.siteOrder}>
         <div className={styles.container}>
-          <OrderBox title={"Projekt"} products={[Products.SharePoint, Products.Exchange, Products.Delve]} />
-          <OrderBox title={"Projekt"} products={[Products.SharePoint, Products.Exchange, Products.Delve]} />
-          <OrderBox title={"Projekt"} products={[Products.SharePoint, Products.Exchange, Products.Delve]} />
+          <OrderBox title={"Projekt"} products={["SharePoint", "Exchange", "Delve"]} />
+          <OrderBox title={"Projekt"} products={["SharePoint", "Exchange", "Delve"]} />
+          <OrderBox title={"Projekt"} products={["SharePoint", "Exchange", "Delve"]} />
         </div >
       </div >
     );
