@@ -7,42 +7,66 @@
   }
   .column {
     @include ms-Grid-col;
-    @include ms-lg4;
+    @include ms-lg6;
     @include ms-sm12;
-    text-align: center;
     padding: 10px;
   }
   .orderBox {
     @include ms-borderBase;
     width: 100%;
     %cell {
-      margin-bottom: 10px;
+      margin: 10px;
     }
     .topCell {
       @extend %cell;
       height: auto;
+      padding: 10px;
+      .headerImage {
+        height: 100px;
+        width: 100px;
+        float: left;
+        .headerIcon {
+          font-size: 80px;
+          height: 80px;
+          width: 80px;
+          margin: 20px 25px 0px 5px;
+        }
+      }
+      .headerText {
+        overflow: hidden;
+        h1 {
+          margin: 0px;
+        }
+      }
     }
     .middleCell {
       @extend %cell;
       height: auto;
+      .productContainer {
+        height: fit-content;
+        .iconContainer {
+          width: 100%;
+          margin: 10px;
+          .icon {
+            font-size: 20px;
+            height: 20px;
+            width: 20px;
+            margin-top: 5px;
+            margin-right: 10px;
+            float: left;
+          }
+          .iconLabel {
+            color: black;
+          }
+        }
+      }
     }
     .bottomCell {
       @extend %cell;
       height: auto;
-      .productContainer {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: space-between;
-        .iconContainer {
-          flex-grow: 1;
-          margin: 10px;
-          .icon {
-            font-size: 50px;
-            height: 50px;
-            width: 50px;
-            margin: 0 15px;
-          }
-        }
+      .primaryButton {
+        width: 100%;
+        margin-bottom: 5px;
       }
     }
   }

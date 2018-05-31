@@ -1,4 +1,4 @@
 export interface IIconContainerProps {
-  iconName: string;
+  service: string;
   label: string;
 }

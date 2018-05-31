@@ -12,7 +12,7 @@ export default class OrderBox extends React.Component<IOrderBoxProps, {}> {
     let iconContainers: any;
     if (this.props.products) {
       iconContainers = this.props.products.map((product: string, i: number) => {
-        return <IconContainer key={i} iconName={product + "Logo"} label={product} />;
+        return <IconContainer key={i} service={product} label={product} />;
       });
     } else {
       iconContainers = <span>no template added to Templatelist</span>;
@@ -21,22 +21,40 @@ export default class OrderBox extends React.Component<IOrderBoxProps, {}> {
       <div className={styles.column}>
         <div className={styles.orderBox}>
           <div className={styles.topCell}>
-            <h1>{this.props.title}</h1>
-            <span>Hier können Sie zusammen in einem Gremium zusammen arbeiten.</span>
+            <div className={styles.headerImage}>
+              <Icon iconName={this.getHeaderIconNameByTitle(this.props.title)} className={styles.headerIcon} />
+            </div>
+            <div className={styles.headerText}>
+              <h1>{this.props.title}</h1>
+              <span>Hier können Sie zusammen in einem Gremium zusammen arbeiten.</span>
+            </div>
           </div>
           <div className={styles.middleCell}>
-            <PrimaryButton href={this.props.link}>{this.props.title} erstellen</PrimaryButton>
-          </div>
-          <div className={styles.bottomCell}>
-            <hr />
-            <h2>Services</h2>
             <div className={styles.productContainer}>
               {iconContainers}
             </div>
           </div>
+          <div className={styles.bottomCell}>
+            <PrimaryButton className={styles.primaryButton} href={this.props.link}>{this.props.title} erstellen</PrimaryButton>
+            <br />
+            <PrimaryButton className={styles.primaryButton} href={this.props.link}>Demo {this.props.title} anschauen</PrimaryButton>
+          </div>
         </div>
-      </div >
+      </div>
     );
+  }
+
+  public getHeaderIconNameByTitle(title: string): string {
+    switch (title) {
+      case "Projekt":
+        return "LineChart";
+      case "Offenes Projekt":
+        return "LineChart";
+      case "Organisation":
+        return "Org";
+      case "Team":
+        return "TeamFavorite";
+    }
   }
 }
 
