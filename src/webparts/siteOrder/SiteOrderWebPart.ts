@@ -1,27 +1,28 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 
-import * as strings from 'SiteOrderWebPartStrings';
-import SiteOrder from './components/SiteOrder';
-import { ISiteOrderProps } from './components/ISiteOrderProps';
+import * as strings from "SiteOrderWebPartStrings";
+import SiteOrder from "./components/SiteOrder";
+import { ISiteOrderProps } from "./components/ISiteOrderProps";
+import { ListDataProvider } from "./providers/TemplateList/ListDataProvider";
 
 export interface ISiteOrderWebPartProps {
-  description: string;
+  templateListName: string;
 }
 
 export default class SiteOrderWebPart extends BaseClientSideWebPart<ISiteOrderWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<ISiteOrderProps > = React.createElement(
+    const element: React.ReactElement<ISiteOrderProps> = React.createElement(
       SiteOrder,
       {
-        description: this.properties.description
+        listDataProvider: new ListDataProvider(this.context, this.properties.templateListName || "Templateliste"),
       }
     );
 
@@ -29,7 +30,7 @@ export default class SiteOrderWebPart extends BaseClientSideWebPart<ISiteOrderWe
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -43,7 +44,7 @@ export default class SiteOrderWebPart extends BaseClientSideWebPart<ISiteOrderWe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
+                PropertyPaneTextField("templateListName", {
                   label: strings.DescriptionFieldLabel
                 })
               ]

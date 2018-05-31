@@ -1,3 +1,5 @@
+import IListDataProvider from "../providers/TemplateList/IListDataProvider";
+
 export interface ISiteOrderProps {
-  description: string;
+  listDataProvider: IListDataProvider;
 }
